@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SwiftMartAPI.Domain\SwiftMartAPI.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
