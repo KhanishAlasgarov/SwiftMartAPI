@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SwiftMartAPI.Application.Interfaces.Repositories;
 using SwiftMartAPI.Persistance.Contexts;
+using SwiftMartAPI.Persistance.Repositories;
 
 namespace SwiftMartAPI.Persistance;
 
@@ -13,6 +15,8 @@ public static class PersistanceServiceRegistration
         {
             opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
         });
+
+        services.AddScoped(typeof(IReadRepository<>),typeof(ReadRepository<>));
         return services;
     }
 }
