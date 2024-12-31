@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace SwiftMartAPI.Persistance.Contexts;
 
-internal class AppDbContext : DbContext
+public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions options) : base(options)
     {

@@ -2,18 +2,19 @@
 using Microsoft.EntityFrameworkCore.Query;
 using SwiftMartAPI.Application.Interfaces.Repositories;
 using SwiftMartAPI.Domain.Common;
+using SwiftMartAPI.Persistance.Contexts;
 using System.Linq.Expressions;
 
 namespace SwiftMartAPI.Persistance.Repositories;
 
 public class ReadRepository<T> : IReadRepository<T> where T : class, IEntityBase
 {
-    public ReadRepository(DbContext context)
+    public ReadRepository(AppDbContext context)
     {
         _context = context;
     }
 
-    private DbContext _context { get; }
+    private AppDbContext _context { get; }
     protected DbSet<T> Table => _context.Set<T>();
 
     public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>>? predicate = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, bool enableTracking = false)
