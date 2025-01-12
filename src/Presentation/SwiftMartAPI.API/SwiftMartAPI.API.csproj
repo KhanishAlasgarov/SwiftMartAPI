@@ -16,10 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\Core\SwiftMartAPI.Application\SwiftMartAPI.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\SwiftMartAPI.Persistance\SwiftMartAPI.Persistance.csproj" />
   </ItemGroup>
 

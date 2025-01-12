@@ -1,3 +1,4 @@
+using SwiftMartAPI.Application;
 using SwiftMartAPI.Persistance;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,8 @@ builder.Configuration
     .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
 builder.Services
-    .AddPersistanceService(builder.Configuration);
+    .AddPersistanceService(builder.Configuration)
+    .AddApplicationService();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
