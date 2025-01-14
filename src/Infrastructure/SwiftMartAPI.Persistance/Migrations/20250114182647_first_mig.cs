@@ -94,24 +94,27 @@ namespace SwiftMartAPI.Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CategoryProduct",
+                name: "ProductCategories",
                 columns: table => new
                 {
-                    CategoriesId = table.Column<int>(type: "int", nullable: false),
-                    ProductsId = table.Column<int>(type: "int", nullable: false)
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CategoryProduct", x => new { x.CategoriesId, x.ProductsId });
+                    table.PrimaryKey("PK_ProductCategories", x => new { x.CategoryId, x.ProductId });
                     table.ForeignKey(
-                        name: "FK_CategoryProduct_Categories_CategoriesId",
-                        column: x => x.CategoriesId,
+                        name: "FK_ProductCategories_Categories_CategoryId",
+                        column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CategoryProduct_Products_ProductsId",
-                        column: x => x.ProductsId,
+                        name: "FK_ProductCategories_Products_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -122,9 +125,9 @@ namespace SwiftMartAPI.Persistance.Migrations
                 columns: new[] { "Id", "CreatedDate", "IsDeleted", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 12, 22, 11, 29, 18, 268, DateTimeKind.Local).AddTicks(2800), false, "Beauty" },
-                    { 2, new DateTime(2024, 12, 22, 11, 29, 18, 268, DateTimeKind.Local).AddTicks(2806), false, "Movies" },
-                    { 3, new DateTime(2024, 12, 22, 11, 29, 18, 268, DateTimeKind.Local).AddTicks(2811), true, "Kids" }
+                    { 1, new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(2462), false, "Automotive, Jewelery & Games" },
+                    { 2, new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(2486), false, "Garden, Movies & Jewelery" },
+                    { 3, new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(2495), true, "Outdoors, Books & Garden" }
                 });
 
             migrationBuilder.InsertData(
@@ -132,10 +135,10 @@ namespace SwiftMartAPI.Persistance.Migrations
                 columns: new[] { "Id", "CreatedDate", "IsDeleted", "Name", "ParentId", "Priorty" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 12, 22, 11, 29, 18, 268, DateTimeKind.Local).AddTicks(4589), false, "Electric", 0, 1 },
-                    { 2, new DateTime(2024, 12, 22, 11, 29, 18, 268, DateTimeKind.Local).AddTicks(4591), false, "Fashion", 0, 1 },
-                    { 3, new DateTime(2024, 12, 22, 11, 29, 18, 268, DateTimeKind.Local).AddTicks(4592), false, "Computer", 1, 2 },
-                    { 4, new DateTime(2024, 12, 22, 11, 29, 18, 268, DateTimeKind.Local).AddTicks(4593), false, "Women", 2, 2 }
+                    { 1, new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(5055), false, "Electric", 0, 1 },
+                    { 2, new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(5062), false, "Fashion", 0, 1 },
+                    { 3, new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(5063), false, "Computer", 1, 2 },
+                    { 4, new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(5064), false, "Women", 2, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -143,9 +146,9 @@ namespace SwiftMartAPI.Persistance.Migrations
                 columns: new[] { "Id", "CategoryId", "CreatedDate", "Description", "IsDeleted", "Title" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2024, 12, 22, 11, 29, 18, 270, DateTimeKind.Local).AddTicks(557), "Reprehenderit ea commodi delectus rerum.", false, "Exercitationem." },
-                    { 2, 3, new DateTime(2024, 12, 22, 11, 29, 18, 270, DateTimeKind.Local).AddTicks(584), "Non consequatur sed perspiciatis harum.", true, "Recusandae aliquid." },
-                    { 3, 4, new DateTime(2024, 12, 22, 11, 29, 18, 270, DateTimeKind.Local).AddTicks(602), "Deserunt omnis sed corrupti itaque.", false, "Officia." }
+                    { 1, 1, new DateTime(2025, 1, 14, 22, 26, 47, 652, DateTimeKind.Local).AddTicks(1998), "Velit est qui tempore aut.", false, "Architecto." },
+                    { 2, 3, new DateTime(2025, 1, 14, 22, 26, 47, 652, DateTimeKind.Local).AddTicks(2055), "Magnam totam voluptate fugiat incidunt.", true, "Molestias quam." },
+                    { 3, 4, new DateTime(2025, 1, 14, 22, 26, 47, 652, DateTimeKind.Local).AddTicks(2075), "Sapiente soluta nisi dolorem nisi.", false, "Sit." }
                 });
 
             migrationBuilder.InsertData(
@@ -153,19 +156,19 @@ namespace SwiftMartAPI.Persistance.Migrations
                 columns: new[] { "Id", "BrandId", "CreatedDate", "Description", "Discount", "IsDeleted", "Price", "Title" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2024, 12, 22, 11, 29, 18, 271, DateTimeKind.Local).AddTicks(5300), "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support", 0.5043300229608190m, false, 346.06m, "Refined Rubber Chair" },
-                    { 2, 3, new DateTime(2024, 12, 22, 11, 29, 18, 271, DateTimeKind.Local).AddTicks(5319), "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive", 2.657389824196960m, false, 193.46m, "Practical Fresh Chair" }
+                    { 1, 1, new DateTime(2025, 1, 14, 22, 26, 47, 654, DateTimeKind.Local).AddTicks(4342), "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support", 9.161846852768120m, false, 120.04m, "Handcrafted Wooden Bacon" },
+                    { 2, 3, new DateTime(2025, 1, 14, 22, 26, 47, 654, DateTimeKind.Local).AddTicks(4367), "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive", 0.2540758885824550m, false, 470.94m, "Awesome Wooden Computer" }
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CategoryProduct_ProductsId",
-                table: "CategoryProduct",
-                column: "ProductsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Details_CategoryId",
                 table: "Details",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductCategories_ProductId",
+                table: "ProductCategories",
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_BrandId",
@@ -177,16 +180,16 @@ namespace SwiftMartAPI.Persistance.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CategoryProduct");
-
-            migrationBuilder.DropTable(
                 name: "Details");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "ProductCategories");
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Brands");

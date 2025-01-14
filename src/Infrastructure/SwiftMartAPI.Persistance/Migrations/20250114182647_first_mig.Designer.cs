@@ -12,7 +12,7 @@ using SwiftMartAPI.Persistance.Contexts;
 namespace SwiftMartAPI.Persistance.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241222072918_first_mig")]
+    [Migration("20250114182647_first_mig")]
     partial class first_mig
     {
         /// <inheritdoc />
@@ -24,21 +24,6 @@ namespace SwiftMartAPI.Persistance.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("CategoryProduct", b =>
-                {
-                    b.Property<int>("CategoriesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CategoriesId", "ProductsId");
-
-                    b.HasIndex("ProductsId");
-
-                    b.ToTable("CategoryProduct");
-                });
 
             modelBuilder.Entity("SwiftMartAPI.Domain.Entities.Brand", b =>
                 {
@@ -67,23 +52,23 @@ namespace SwiftMartAPI.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 12, 22, 11, 29, 18, 268, DateTimeKind.Local).AddTicks(2800),
+                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(2462),
                             IsDeleted = false,
-                            Name = "Beauty"
+                            Name = "Automotive, Jewelery & Games"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 12, 22, 11, 29, 18, 268, DateTimeKind.Local).AddTicks(2806),
+                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(2486),
                             IsDeleted = false,
-                            Name = "Movies"
+                            Name = "Garden, Movies & Jewelery"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 12, 22, 11, 29, 18, 268, DateTimeKind.Local).AddTicks(2811),
+                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(2495),
                             IsDeleted = true,
-                            Name = "Kids"
+                            Name = "Outdoors, Books & Garden"
                         });
                 });
 
@@ -119,7 +104,7 @@ namespace SwiftMartAPI.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 12, 22, 11, 29, 18, 268, DateTimeKind.Local).AddTicks(4589),
+                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(5055),
                             IsDeleted = false,
                             Name = "Electric",
                             ParentId = 0,
@@ -128,7 +113,7 @@ namespace SwiftMartAPI.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 12, 22, 11, 29, 18, 268, DateTimeKind.Local).AddTicks(4591),
+                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(5062),
                             IsDeleted = false,
                             Name = "Fashion",
                             ParentId = 0,
@@ -137,7 +122,7 @@ namespace SwiftMartAPI.Persistance.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 12, 22, 11, 29, 18, 268, DateTimeKind.Local).AddTicks(4592),
+                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(5063),
                             IsDeleted = false,
                             Name = "Computer",
                             ParentId = 1,
@@ -146,7 +131,7 @@ namespace SwiftMartAPI.Persistance.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2024, 12, 22, 11, 29, 18, 268, DateTimeKind.Local).AddTicks(4593),
+                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(5064),
                             IsDeleted = false,
                             Name = "Women",
                             ParentId = 2,
@@ -190,28 +175,28 @@ namespace SwiftMartAPI.Persistance.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2024, 12, 22, 11, 29, 18, 270, DateTimeKind.Local).AddTicks(557),
-                            Description = "Reprehenderit ea commodi delectus rerum.",
+                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 652, DateTimeKind.Local).AddTicks(1998),
+                            Description = "Velit est qui tempore aut.",
                             IsDeleted = false,
-                            Title = "Exercitationem."
+                            Title = "Architecto."
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2024, 12, 22, 11, 29, 18, 270, DateTimeKind.Local).AddTicks(584),
-                            Description = "Non consequatur sed perspiciatis harum.",
+                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 652, DateTimeKind.Local).AddTicks(2055),
+                            Description = "Magnam totam voluptate fugiat incidunt.",
                             IsDeleted = true,
-                            Title = "Recusandae aliquid."
+                            Title = "Molestias quam."
                         },
                         new
                         {
                             Id = 3,
                             CategoryId = 4,
-                            CreatedDate = new DateTime(2024, 12, 22, 11, 29, 18, 270, DateTimeKind.Local).AddTicks(602),
-                            Description = "Deserunt omnis sed corrupti itaque.",
+                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 652, DateTimeKind.Local).AddTicks(2075),
+                            Description = "Sapiente soluta nisi dolorem nisi.",
                             IsDeleted = false,
-                            Title = "Officia."
+                            Title = "Sit."
                         });
                 });
 
@@ -257,39 +242,48 @@ namespace SwiftMartAPI.Persistance.Migrations
                         {
                             Id = 1,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 12, 22, 11, 29, 18, 271, DateTimeKind.Local).AddTicks(5300),
+                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 654, DateTimeKind.Local).AddTicks(4342),
                             Description = "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
-                            Discount = 0.5043300229608190m,
+                            Discount = 9.161846852768120m,
                             IsDeleted = false,
-                            Price = 346.06m,
-                            Title = "Refined Rubber Chair"
+                            Price = 120.04m,
+                            Title = "Handcrafted Wooden Bacon"
                         },
                         new
                         {
                             Id = 2,
                             BrandId = 3,
-                            CreatedDate = new DateTime(2024, 12, 22, 11, 29, 18, 271, DateTimeKind.Local).AddTicks(5319),
+                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 654, DateTimeKind.Local).AddTicks(4367),
                             Description = "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
-                            Discount = 2.657389824196960m,
+                            Discount = 0.2540758885824550m,
                             IsDeleted = false,
-                            Price = 193.46m,
-                            Title = "Practical Fresh Chair"
+                            Price = 470.94m,
+                            Title = "Awesome Wooden Computer"
                         });
                 });
 
-            modelBuilder.Entity("CategoryProduct", b =>
+            modelBuilder.Entity("SwiftMartAPI.Domain.Entities.ProductCategory", b =>
                 {
-                    b.HasOne("SwiftMartAPI.Domain.Entities.Category", null)
-                        .WithMany()
-                        .HasForeignKey("CategoriesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
 
-                    b.HasOne("SwiftMartAPI.Domain.Entities.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("CategoryId", "ProductId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductCategories");
                 });
 
             modelBuilder.Entity("SwiftMartAPI.Domain.Entities.Detail", b =>
@@ -314,9 +308,35 @@ namespace SwiftMartAPI.Persistance.Migrations
                     b.Navigation("Brand");
                 });
 
+            modelBuilder.Entity("SwiftMartAPI.Domain.Entities.ProductCategory", b =>
+                {
+                    b.HasOne("SwiftMartAPI.Domain.Entities.Category", "Category")
+                        .WithMany("ProductCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SwiftMartAPI.Domain.Entities.Product", "Product")
+                        .WithMany("ProductCategories")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("SwiftMartAPI.Domain.Entities.Category", b =>
                 {
                     b.Navigation("Details");
+
+                    b.Navigation("ProductCategories");
+                });
+
+            modelBuilder.Entity("SwiftMartAPI.Domain.Entities.Product", b =>
+                {
+                    b.Navigation("ProductCategories");
                 });
 #pragma warning restore 612, 618
         }

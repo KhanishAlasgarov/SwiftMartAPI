@@ -21,7 +21,7 @@ public class Category : EntityBase
     public int Priorty { get; set; }
     public IEnumerable<Detail>? Details { get; set; }
 
-    public IEnumerable<Product>? Products { get; set; }
+    public IEnumerable<ProductCategory>? ProductCategories { get; set; }
 }
 
 

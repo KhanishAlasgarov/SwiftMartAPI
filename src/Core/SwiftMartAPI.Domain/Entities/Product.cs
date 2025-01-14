@@ -11,7 +11,7 @@ public class Product : EntityBase
     public decimal Price { get; set; }
     public decimal Discount { get; set; }
 
-    public IEnumerable<Category>? Categories { get; set; }
+    public IEnumerable<ProductCategory>? ProductCategories { get; set; }
 
 
     //public required string ImagePath { get; set; }
