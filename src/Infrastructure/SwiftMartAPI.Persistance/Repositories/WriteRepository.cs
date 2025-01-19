@@ -45,5 +45,8 @@ public class WriteRepository<T> : IWriteRepository<T> where T : class, IEntityBa
         return Update(entity);
     }
 
-
+    public void HardRangeDelete(IEnumerable<T> entity)
+    {
+        Table.RemoveRange(entity);
+    }
 }

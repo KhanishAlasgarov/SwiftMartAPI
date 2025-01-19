@@ -18,7 +18,11 @@ public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQueryReq
     public IMapper _mapper { get; }
     public async Task<IEnumerable<GetAllProductsQueryResponse>> Handle(GetAllProductsQueryRequest request, CancellationToken cancellationToken)
     {
-        var products = await _uow.GetReadRepository<Product>().GetAllAsync(include: x => x.Include(p => p.Brand!));
+        var products = await _uow.GetReadRepository<Product>().GetAllAsync(include: x => x.Include(p => p.Brand!).Include(p => p.ProductCategories!).ThenInclude(x => x.Category!));
+
+        
+
+         
 
         return _mapper.Map<IEnumerable<GetAllProductsQueryResponse>>(products);
 

@@ -9,5 +9,6 @@ public class GetAllProductsQueryResponse
     public string Description { get; set; } 
     public decimal Price { get; set; }
     public BrandDto Brand { get; set; }
+    public IEnumerable<CategoryDto> Categories { get; set; }
 }
     
