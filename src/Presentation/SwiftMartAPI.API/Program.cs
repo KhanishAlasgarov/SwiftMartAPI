@@ -1,4 +1,5 @@
 using SwiftMartAPI.Application;
+using SwiftMartAPI.Application.Exceptions;
 using SwiftMartAPI.Persistance;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +28,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.ConfigureExceptionHandlingMiddleware();
 app.UseAuthorization();
 
 app.MapControllers();

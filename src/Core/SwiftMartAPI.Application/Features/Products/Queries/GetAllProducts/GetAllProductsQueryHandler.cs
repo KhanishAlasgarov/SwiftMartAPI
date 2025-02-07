@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using SendGrid.Helpers.Errors.Model;
 using SwiftMartAPI.Application.UnitOfWorks;
 using SwiftMartAPI.Domain.Entities;
 
@@ -19,10 +20,6 @@ public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQueryReq
     public async Task<IEnumerable<GetAllProductsQueryResponse>> Handle(GetAllProductsQueryRequest request, CancellationToken cancellationToken)
     {
         var products = await _uow.GetReadRepository<Product>().GetAllAsync(include: x => x.Include(p => p.Brand!).Include(p => p.ProductCategories!).ThenInclude(x => x.Category!));
-
-        
-
-         
 
         return _mapper.Map<IEnumerable<GetAllProductsQueryResponse>>(products);
 

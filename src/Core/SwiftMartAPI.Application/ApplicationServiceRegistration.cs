@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using SwiftMartAPI.Application.Exceptions;
 using System.Reflection;
 
 namespace SwiftMartAPI.Application;
@@ -11,7 +12,7 @@ public static class ApplicationServiceRegistration
         {
             con.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
         });
-
+        services.AddTransient<ExceptionMiddleware>();
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
         return services;
