@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using SwiftMartAPI.Application.Exceptions;
 using System.Reflection;
 
@@ -14,6 +16,10 @@ public static class ApplicationServiceRegistration
         });
         services.AddTransient<ExceptionMiddleware>();
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+        ValidatorOptions.Global.LanguageManager.Culture = new System.Globalization.CultureInfo("az");
 
         return services;
 

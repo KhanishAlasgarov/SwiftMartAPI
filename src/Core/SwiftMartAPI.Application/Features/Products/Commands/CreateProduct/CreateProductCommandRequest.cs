@@ -12,3 +12,5 @@ public class CreateProductCommandRequest : IRequest
     public decimal Discount { get; set; }
     public IEnumerable<int> CategoryIds { get; set; }
 }
+
+ 

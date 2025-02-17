@@ -1,12 +1,26 @@
+using FluentValidation.AspNetCore;
+using Newtonsoft.Json;
 using SwiftMartAPI.Application;
 using SwiftMartAPI.Application.Exceptions;
+using SwiftMartAPI.Application.Filters;
+
 using SwiftMartAPI.Persistance;
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+
+
+builder.Services
+    .AddControllers(opt => opt.Filters.Add<ValidationFilter>())
+    .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true)
+    .AddNewtonsoftJson(cfg => cfg.SerializerSettings.NullValueHandling = NullValueHandling.Ignore);
+
+builder.Services.AddFluentValidationAutoValidation(cfg =>
+{
+    cfg.DisableDataAnnotationsValidation = true;
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
