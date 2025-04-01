@@ -22,6 +22,109 @@ namespace SwiftMartAPI.Persistance.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
             modelBuilder.Entity("SwiftMartAPI.Domain.Entities.Brand", b =>
                 {
                     b.Property<int>("Id")
@@ -49,23 +152,23 @@ namespace SwiftMartAPI.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(2462),
+                            CreatedDate = new DateTime(2025, 4, 1, 18, 24, 32, 871, DateTimeKind.Local).AddTicks(7397),
                             IsDeleted = false,
-                            Name = "Automotive, Jewelery & Games"
+                            Name = "Toys & Home"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(2486),
+                            CreatedDate = new DateTime(2025, 4, 1, 18, 24, 32, 871, DateTimeKind.Local).AddTicks(7416),
                             IsDeleted = false,
-                            Name = "Garden, Movies & Jewelery"
+                            Name = "Industrial & Computers"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(2495),
+                            CreatedDate = new DateTime(2025, 4, 1, 18, 24, 32, 871, DateTimeKind.Local).AddTicks(7429),
                             IsDeleted = true,
-                            Name = "Outdoors, Books & Garden"
+                            Name = "Beauty, Sports & Automotive"
                         });
                 });
 
@@ -101,7 +204,7 @@ namespace SwiftMartAPI.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(5055),
+                            CreatedDate = new DateTime(2025, 4, 1, 18, 24, 32, 871, DateTimeKind.Local).AddTicks(9818),
                             IsDeleted = false,
                             Name = "Electric",
                             ParentId = 0,
@@ -110,7 +213,7 @@ namespace SwiftMartAPI.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(5062),
+                            CreatedDate = new DateTime(2025, 4, 1, 18, 24, 32, 871, DateTimeKind.Local).AddTicks(9828),
                             IsDeleted = false,
                             Name = "Fashion",
                             ParentId = 0,
@@ -119,7 +222,7 @@ namespace SwiftMartAPI.Persistance.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(5063),
+                            CreatedDate = new DateTime(2025, 4, 1, 18, 24, 32, 871, DateTimeKind.Local).AddTicks(9829),
                             IsDeleted = false,
                             Name = "Computer",
                             ParentId = 1,
@@ -128,7 +231,7 @@ namespace SwiftMartAPI.Persistance.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 650, DateTimeKind.Local).AddTicks(5064),
+                            CreatedDate = new DateTime(2025, 4, 1, 18, 24, 32, 871, DateTimeKind.Local).AddTicks(9830),
                             IsDeleted = false,
                             Name = "Women",
                             ParentId = 2,
@@ -172,28 +275,28 @@ namespace SwiftMartAPI.Persistance.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 652, DateTimeKind.Local).AddTicks(1998),
-                            Description = "Velit est qui tempore aut.",
+                            CreatedDate = new DateTime(2025, 4, 1, 18, 24, 32, 873, DateTimeKind.Local).AddTicks(5861),
+                            Description = "Voluptate dolores aut et molestias.",
                             IsDeleted = false,
-                            Title = "Architecto."
+                            Title = "Doloribus."
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 652, DateTimeKind.Local).AddTicks(2055),
-                            Description = "Magnam totam voluptate fugiat incidunt.",
+                            CreatedDate = new DateTime(2025, 4, 1, 18, 24, 32, 873, DateTimeKind.Local).AddTicks(5892),
+                            Description = "Et dolores dolor nihil rerum.",
                             IsDeleted = true,
-                            Title = "Molestias quam."
+                            Title = "Sint cumque."
                         },
                         new
                         {
                             Id = 3,
                             CategoryId = 4,
-                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 652, DateTimeKind.Local).AddTicks(2075),
-                            Description = "Sapiente soluta nisi dolorem nisi.",
+                            CreatedDate = new DateTime(2025, 4, 1, 18, 24, 32, 873, DateTimeKind.Local).AddTicks(5909),
+                            Description = "Fugiat sint veritatis dolores voluptas.",
                             IsDeleted = false,
-                            Title = "Sit."
+                            Title = "Sunt."
                         });
                 });
 
@@ -239,23 +342,23 @@ namespace SwiftMartAPI.Persistance.Migrations
                         {
                             Id = 1,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 654, DateTimeKind.Local).AddTicks(4342),
-                            Description = "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
-                            Discount = 9.161846852768120m,
+                            CreatedDate = new DateTime(2025, 4, 1, 18, 24, 32, 875, DateTimeKind.Local).AddTicks(7035),
+                            Description = "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+                            Discount = 7.119614928455330m,
                             IsDeleted = false,
-                            Price = 120.04m,
-                            Title = "Handcrafted Wooden Bacon"
+                            Price = 436.31m,
+                            Title = "Gorgeous Plastic Car"
                         },
                         new
                         {
                             Id = 2,
                             BrandId = 3,
-                            CreatedDate = new DateTime(2025, 1, 14, 22, 26, 47, 654, DateTimeKind.Local).AddTicks(4367),
-                            Description = "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
-                            Discount = 0.2540758885824550m,
+                            CreatedDate = new DateTime(2025, 4, 1, 18, 24, 32, 875, DateTimeKind.Local).AddTicks(7063),
+                            Description = "The Football Is Good For Training And Recreational Purposes",
+                            Discount = 5.634619114393820m,
                             IsDeleted = false,
-                            Price = 470.94m,
-                            Title = "Awesome Wooden Computer"
+                            Price = 290.02m,
+                            Title = "Practical Metal Shoes"
                         });
                 });
 
@@ -281,6 +384,161 @@ namespace SwiftMartAPI.Persistance.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductCategories");
+                });
+
+            modelBuilder.Entity("SwiftMartAPI.Domain.Entities.Role", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("SwiftMartAPI.Domain.Entities.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RefreshTokenExpriryTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
+                {
+                    b.HasOne("SwiftMartAPI.Domain.Entities.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
+                {
+                    b.HasOne("SwiftMartAPI.Domain.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
+                {
+                    b.HasOne("SwiftMartAPI.Domain.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
+                {
+                    b.HasOne("SwiftMartAPI.Domain.Entities.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SwiftMartAPI.Domain.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
+                {
+                    b.HasOne("SwiftMartAPI.Domain.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SwiftMartAPI.Domain.Entities.Detail", b =>

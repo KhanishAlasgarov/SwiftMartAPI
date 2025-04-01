@@ -3,10 +3,11 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using SwiftMartAPI.Domain.Common;
 using SwiftMartAPI.Domain.Entities;
 using System.Reflection;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace SwiftMartAPI.Persistance.Contexts;
 
-public class AppDbContext : DbContext
+public class AppDbContext : IdentityDbContext<User, Role, Guid>
 {
     public AppDbContext(DbContextOptions options) : base(options)
     {

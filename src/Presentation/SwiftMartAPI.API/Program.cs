@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using SwiftMartAPI.Application;
 using SwiftMartAPI.Application.Exceptions;
 using SwiftMartAPI.Application.Filters;
-
+using SwiftMartAPI.Infrastructure;
 using SwiftMartAPI.Persistance;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,7 +33,7 @@ builder.Configuration
 
 builder.Services
     .AddPersistanceService(builder.Configuration)
-    .AddApplicationService();
+    .AddApplicationService().AddInfrastructureService(builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

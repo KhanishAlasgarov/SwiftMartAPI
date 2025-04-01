@@ -1,10 +1,9 @@
-﻿using FluentValidation;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-using SwiftMartAPI.Application.Exceptions;
+﻿using System.Globalization;
 using System.Reflection;
+using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 using SwiftMartAPI.Application.Bases;
-using SwiftMartAPI.Application.Features.Products.Exceptions;
+using SwiftMartAPI.Application.Exceptions;
 
 namespace SwiftMartAPI.Application;
 
@@ -21,7 +20,7 @@ public static class ApplicationServiceRegistration
 
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
-        ValidatorOptions.Global.LanguageManager.Culture = new System.Globalization.CultureInfo("az");
+        ValidatorOptions.Global.LanguageManager.Culture = new CultureInfo("az");
 
         services.AddSubClassesOfType(Assembly.GetExecutingAssembly(), typeof(BaseRules));
         
