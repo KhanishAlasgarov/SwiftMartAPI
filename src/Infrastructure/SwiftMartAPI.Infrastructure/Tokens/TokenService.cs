@@ -73,7 +73,7 @@ public class TokenService : ITokenService
             out SecurityToken securityToken);
 
         if (securityToken is not JwtSecurityToken jwtSecurityToken ||
-            jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256,
+            !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256,
                 StringComparison.InvariantCultureIgnoreCase))
             throw new SecurityTokenException("Token not found'");
 
