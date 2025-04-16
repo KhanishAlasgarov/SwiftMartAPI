@@ -6,6 +6,10 @@ public class RegisterCommandValidator : AbstractValidator<RegisterCommandRequest
 {
     public RegisterCommandValidator()
     {
+        RuleFor(x => x.Username)
+            .NotEmpty()
+            .MinimumLength(3)
+            .MaximumLength(50);
         RuleFor(x => x.FullName)
             .NotEmpty()
             .MaximumLength(50)

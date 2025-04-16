@@ -34,7 +34,7 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommandRequest>
 
     public async Task Handle(RegisterCommandRequest request, CancellationToken cancellationToken)
     {
-        _authRules.UserShouldNotBeExisted(await _UserManager.FindByIdAsync(request.Email));
+        _authRules.UserShouldNotBeExisted(await _UserManager.FindByEmailAsync(request.Email));
         User user = _mapper.Map<User>(request);
         user.SecurityStamp = Guid.NewGuid().ToString();
 

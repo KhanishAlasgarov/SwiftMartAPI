@@ -30,6 +30,7 @@ builder.Configuration
 builder.Services
     .AddPersistanceService(builder.Configuration)
     .AddApplicationService().AddInfrastructureService(builder.Configuration);
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddSwaggerGen(c =>
 {

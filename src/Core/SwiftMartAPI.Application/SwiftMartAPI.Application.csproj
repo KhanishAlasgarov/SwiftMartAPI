@@ -27,4 +27,8 @@
     <ProjectReference Include="..\SwiftMartAPI.Domain\SwiftMartAPI.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Auth\Queries\" />
+  </ItemGroup>
+
 </Project>
